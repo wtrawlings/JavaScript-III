@@ -33,18 +33,17 @@ function Book(attr) {
 const hobbit = new Book { title: "the Hobbit", author: "Tolkein", subject: "Fantasy" };
 // Principle 4
 
-// code example for Explicit Binding
-// function Product(name, price) {
-//   this.name = name;
-//   this.price = price;
-// }
+//code example for Explicit Binding
+function BookSet(name, price) {
+    this.name = name;
+    this.price = price;
+}
 
-// function Food(name, price) {
-//   Product.call(this, name, price);
-//   this.category = 'food';
-//   console.log(`${this.name} for ${this.price}`);
-// }
+function Comic(name, price) {
+    BookSet.call(this, name, price);
+    this.category = 'Comic';
+    console.log(`${this.name} for ${this.price}`);
+}
 
-// console.log(new Food('cheese', 5).name);
-// console.log(new Food('apple', .25).price);
-// expected output: "cheese"
+console.log(new Comic('x-factor', 5).name);
+console.log(new Comic('x-men', .25).price);
