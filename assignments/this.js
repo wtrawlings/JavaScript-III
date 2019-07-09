@@ -22,12 +22,15 @@ console.log(this);
 // Principle 3
 
 // code example for New Binding
-function book(title, author, subject) {
-    this.title = title;
-    this.author = author;
-    this.subject = subject;
-    console.log('${this.title} by ${this.author}');
+function Book(attr) {
+    this.title = attr.title;
+    this.author = attr.author;
+    this.subject = attr.subject;
+    this.present = function() {
+        console.log('our new book is ${this.title} by ${this.author}.');
+    }
 }
+const hobbit = new Book { title: "the Hobbit", author: "Tolkein", subject: "Fantasy" };
 // Principle 4
 
 // code example for Explicit Binding
