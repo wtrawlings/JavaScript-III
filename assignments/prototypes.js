@@ -35,6 +35,7 @@ function CharacterStats(charStats) {
     this.healthPoints = charStats.healthPoints;
     GameObject.call(this, charStats);
 }
+CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function() {
     return '${this.name} took damage.';
 }
@@ -49,11 +50,12 @@ CharacterStats.prototype.takeDamage = function() {
   * should inherit takeDamage() from CharacterStats
 */
 function Humanoid(human) {
-    characterStats.call(this, human);
+    CharacterStats.call(this, human);
     this.team = human.team;
     this.weapons = human.weapons;
     this.language = human.language;
 }
+Humanoid.prototype = Object.create(CharacterStats.prototype);
 Humanoid.prototype.greet = function() {
     return `${this.name} offers a greeting in ${this.language}.`;
 };
