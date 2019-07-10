@@ -16,8 +16,12 @@ console.log(this);
 
 // Principle 2
 // code example for Implicit Binding
-console.log(this);
-// THIS is accessing the CONSOLE because console is the object to the left of the DOT.
+const tome = {
+    pages: 100,
+    cover: "hard",
+}
+console.log(tome.pages) //in this case TOME object is at the left of the dot
+console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT.
 
 // Principle 3
 
