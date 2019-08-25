@@ -17,10 +17,15 @@ console.log(this);
 // Principle 2
 // code example for Implicit Binding
 const tome = {
+    title: "Awesome Book!",
     pages: 100,
     cover: "hard",
-}
-console.log(tome.pages) //in this case TOME object is at the left of the dot
+    sayAuthor: function(name) {
+        console.log(`${this.title} my book is ${name}`);
+        console.log(this);
+    }
+};
+tome.sayAuthor("Warren"); //calling the function the THIS refers to the object which is to the left of the DOT. In this case TOME
 console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT.
 
 // Principle 3
