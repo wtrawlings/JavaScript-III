@@ -31,15 +31,17 @@ console.log(this); // THIS is accessing the CONSOLE because console is the objec
 // Principle 3
 
 // code example for New Binding
-function Book(attr) {
-    this.title = attr.title;
-    this.author = attr.author;
-    this.subject = attr.subject;
+function Book(title, author, subject) {
+    this.title = title;
+    this.author = author;
+    this.subject = subject;
     this.present = function() {
-        console.log('our new book is ${this.title} by ${this.author}.');
+        console.log(`our new book is ${this.title} by ${this.author}.`);
     }
 }
-const hobbit = new Book { title: "the Hobbit", author: "Tolkein", subject: "Fantasy" };
+const hobbit = new Book("the Hobbit", "Tolkein", "Fantasy");
+hobbit.present();
+
 // Principle 4
 
 //code example for Explicit Binding
@@ -56,3 +58,5 @@ function Comic(name, price) {
 
 console.log(new Comic('x-factor', 5).name);
 console.log(new Comic('x-men', .25).price);
+const xMen = new Comic("x-men", 2.50)
+console.log(xMen); // construct the X-Men Comic (BookSet) with a category of Comic
