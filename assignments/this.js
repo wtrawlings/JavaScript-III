@@ -59,4 +59,4 @@ function Comic(name, price) {
 console.log(new Comic('x-factor', 5).name);
 console.log(new Comic('x-men', .25).price);
 const xMen = new Comic("x-men", 2.50)
-console.log(xMen); // construct the X-Men Comic (BookSet) with a category of Comic
+console.log(xMen); // construct the X-Men Comic (BookSet) with a category of Comic built into the constructor.
