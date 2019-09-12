@@ -134,5 +134,47 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 // Stretch task: 
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+
+const villian = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+    },
+    healthPoints: 10,
+    name: 'BadGuy',
+    team: 'Team Evil',
+    weapons: [
+        'Bow',
+        'Dagger',
+    ],
+    language: 'Common',
+    //methods
+    bowAttack: function(victim) {
+        victim.healthPoints = victim.healthPoints - 4;
+    },
+});
+
+const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+    },
+    healthPoints: 10,
+    name: 'GoodFellas',
+    team: 'Team Goodies',
+    weapons: [
+        'Spear',
+        'Shield',
+    ],
+    language: 'Common',
+});
+
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+villian.bowAttack(hero);
+//This method should lower the hero's healthPoint stat by 4 per attack.

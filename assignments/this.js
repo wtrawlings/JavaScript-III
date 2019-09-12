@@ -21,12 +21,13 @@ const tome = {
     pages: 100,
     cover: "hard",
     sayAuthor: function(name) {
-        console.log(`${this.title} my book is ${name}`);
+        console.log(`${this.title} my author is ${name}`);
         console.log(this);
     }
 };
-tome.sayAuthor("Warren"); //calling the function the THIS refers to the object which is to the left of the DOT. In this case TOME
-console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT.
+tome.sayAuthor("Warren"); //calling the function the THIS refers to the object which is to the left of the DOT. In this case TOME.
+
+console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT. This makes sense for this one because it's outside of the object. The other console.log inside the object is going to referr to the object TOME.
 
 // Principle 3
 
