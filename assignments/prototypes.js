@@ -150,10 +150,7 @@ const villian = new Humanoid({
         'Dagger',
     ],
     language: 'Common',
-    //methods
-    bowAttack: function(victim) {
-        victim.healthPoints = victim.healthPoints - 4;
-    },
+
 });
 
 const hero = new Humanoid({
@@ -176,5 +173,11 @@ const hero = new Humanoid({
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
-villian.bowAttack(hero);
+
+//methods
+Humanoid.prototype.bowAttack = function(victim) {
+        victim.healthPoints = victim.healthPoints - 4;
+    },
+    villian.bowAttack(hero);
 //This method should lower the hero's healthPoint stat by 4 per attack.
+console.log(hero.healthPoints);
