@@ -16,13 +16,13 @@
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
-function GameObject(attr) {
-    this.createdAt = attr.createdAt;
-    this.name = attr.name;
-    this.dimensions = attr.dimensions;
+function GameObject(attributes) {
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
 }
 GameObject.prototype.destroy = function() {
-    return ' ${this.name} was removed from the game.';
+    return ` ${this.name} was removed from the game.`;
 }
 
 /*
@@ -32,12 +32,13 @@ GameObject.prototype.destroy = function() {
   * should inherit destroy() from GameObject's prototype
 */
 function CharacterStats(charStats) {
-    this.healthPoints = charStats.healthPoints;
     GameObject.call(this, charStats);
+    this.healthPoints = charStats.healthPoints;
+
 }
 CharacterStats.prototype = Object.create(GameObject.prototype);
 CharacterStats.prototype.takeDamage = function() {
-    return '${this.name} took damage.';
+    return `${this.name} took damage.`;
 }
 
 /*
@@ -133,5 +134,50 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 // Stretch task: 
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+
+const villian = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+    },
+    healthPoints: 10,
+    name: 'BadGuy',
+    team: 'Team Evil',
+    weapons: [
+        'Bow',
+        'Dagger',
+    ],
+    language: 'Common',
+
+});
+
+const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+        length: 1,
+        width: 2,
+        height: 4,
+    },
+    healthPoints: 10,
+    name: 'GoodFellas',
+    team: 'Team Goodies',
+    weapons: [
+        'Spear',
+        'Shield',
+    ],
+    language: 'Common',
+});
+
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+//methods
+Humanoid.prototype.bowAttack = function(victim) {
+        victim.healthPoints = victim.healthPoints - 4;
+    },
+    villian.bowAttack(hero);
+//This method should lower the hero's healthPoint stat by 4 per attack.
+console.log(hero.healthPoints);

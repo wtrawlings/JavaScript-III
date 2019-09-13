@@ -17,24 +17,32 @@ console.log(this);
 // Principle 2
 // code example for Implicit Binding
 const tome = {
+    title: "Awesome Book!",
     pages: 100,
     cover: "hard",
-}
-console.log(tome.pages) //in this case TOME object is at the left of the dot
-console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT.
+    sayAuthor: function(name) {
+        console.log(`${this.title} my author is ${name}`);
+        console.log(this);
+    }
+};
+tome.sayAuthor("Warren"); //calling the function the THIS refers to the object which is to the left of the DOT. In this case TOME.
+
+console.log(this); // THIS is accessing the CONSOLE because console is the object to the left of the DOT. This makes sense for this one because it's outside of the object. The other console.log inside the object is going to referr to the object TOME.
 
 // Principle 3
 
 // code example for New Binding
-function Book(attr) {
-    this.title = attr.title;
-    this.author = attr.author;
-    this.subject = attr.subject;
+function Book(title, author, subject) {
+    this.title = title;
+    this.author = author;
+    this.subject = subject;
     this.present = function() {
-        console.log('our new book is ${this.title} by ${this.author}.');
+        console.log(`our new book is ${this.title} by ${this.author}.`);
     }
 }
-const hobbit = new Book { title: "the Hobbit", author: "Tolkein", subject: "Fantasy" };
+const hobbit = new Book("the Hobbit", "Tolkein", "Fantasy");
+hobbit.present();
+
 // Principle 4
 
 //code example for Explicit Binding
@@ -51,3 +59,5 @@ function Comic(name, price) {
 
 console.log(new Comic('x-factor', 5).name);
 console.log(new Comic('x-men', .25).price);
+const xMen = new Comic("x-men", 2.50)
+console.log(xMen); // construct the X-Men Comic (BookSet) with a category of Comic built into the constructor.
